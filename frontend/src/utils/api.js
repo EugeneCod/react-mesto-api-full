@@ -1,11 +1,11 @@
 const configApi = {
-  host: 'https://mesto.nomoreparties.co/v1/cohort-47',
-  token: 'fecf0c0a-0938-47a0-bc3a-dfac6e5ffd59'
+  BASE_URL: 'https://api.mesto.ekg.nomoredomains.icu',
+  token: `Bearer ${localStorage.getItem('jwt')}`,
 }
 
 class Api {
   constructor(configApi) {
-    this._host = configApi.host;
+    this._baseUrl = configApi.BASE_URL;
     this._token = configApi.token;
   }
 
@@ -24,14 +24,14 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._host}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: this._getHeaders()
     })
     .then(this._getJsonOrError)
   }
 
   setUserInfo(data) {
-    return fetch(`${this._host}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._getHeaders(),
       body: JSON.stringify(data)
@@ -40,7 +40,7 @@ class Api {
   }
 
   setAvatar(data) {
-    return fetch(`${this._host}/users/me/avatar `, {
+    return fetch(`${this._baseUrl}/users/me/avatar `, {
       method: 'PATCH',
       headers: this._getHeaders(),
       body: JSON.stringify(data)
@@ -50,14 +50,14 @@ class Api {
   }
 
   getCards() {
-    return fetch(`${this._host}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: this._getHeaders()
     })
     .then(this._getJsonOrError)
   }
 
   addCard(data) {
-    return fetch(`${this._host}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: this._getHeaders(),
       body: JSON.stringify(data)
@@ -66,14 +66,14 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._host}/cards/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._getHeaders(),
     })
   }
 
   changeLikeCardStatus(isLiked, cardId) {
-    return fetch(`${this._host}/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: `${isLiked ? 'DELETE' : 'PUT'}`,
       headers: this._getHeaders()
     })
