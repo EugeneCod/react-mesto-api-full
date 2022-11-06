@@ -1,6 +1,5 @@
 {
-  "homepage": "https://EugeneCod.github.io/react-mesto-auth",
-  "name": "react-mesto-auth",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +14,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./build/* eugene-k-gen@158.160.37.116:/home/eugene-k-gen/react-mesto-api-full/frontend/build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
