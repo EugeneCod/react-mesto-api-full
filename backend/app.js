@@ -4,6 +4,7 @@ const console = require('console');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+require('dotenv').config();
 
 const cors = require('./middlewares/CORS');
 const auth = require('./middlewares/auth');
