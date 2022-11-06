@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const cors = require('./middlewares/CORS');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/error-handler');
 const { ERROR_MESSAGES } = require('./utils/constants');
@@ -16,6 +17,7 @@ const {
 } = process.env;
 
 const app = express();
+app.use(cors);
 
 app.use(cookieParser());
 app.use(express.json());
