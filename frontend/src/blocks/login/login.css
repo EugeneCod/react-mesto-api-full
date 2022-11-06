@@ -1,0 +1,13 @@
+.login {
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  height: calc(100vh - 180px);
+}
+
+@media (max-width: 767px) {
+  .login {
+    height: calc(100vh - 126px);
+    padding-top: 42px;
+  }
+}
