@@ -1,4 +1,4 @@
-const BASE_URL = 'api.mesto.ekg.nomoredomains.icu';
+const BASE_URL = 'https://api.mesto.ekg.nomoredomains.icu';
 
 const request = async ({
   url,
