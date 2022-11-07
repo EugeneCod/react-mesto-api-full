@@ -2,7 +2,7 @@
 const allowedCors = [
   'https://mesto.ekg.nomoredomains.icu',
   'http://mesto.ekg.nomoredomains.icu',
-  'localhost:3000',
+  'http://localhost:3000',
 ];
 
 // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
