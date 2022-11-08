@@ -19,7 +19,7 @@ import ErrorPage from './ErrorPage';
 
 
 const infoTooltpOptions = {
-  approval:  {
+  approval: {
     text: 'Вы успешно зарегистрировались!',
     imageName: 'approval'
   },
@@ -33,7 +33,7 @@ const routes = {
   baseRoute: '/',
   signIn: '/sign-in',
   signUp: '/sign-up',
-}; 
+};
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -50,7 +50,7 @@ function App() {
   const [userEmail, setUserEmail] = useState('')
   const [infoTooltipData, setInfoTooltipData] = useState({ text: '', imageName: '' });
   const history = useHistory();
-
+  console.log(cards);
   useEffect(() => {
     loggedIn &&
       Promise.all([
@@ -59,7 +59,7 @@ function App() {
       ])
         .then(([userData, cardsData]) => {
           setCurrentUser(userData);
-          setCards(cardsData)
+          setCards(cardsData.data)
         })
         .catch(err => console.log(`${err} при первичной загрузке данных`));
   }, [loggedIn])
@@ -76,7 +76,7 @@ function App() {
       auth.getEmail(jwt)
         .then(res => {
           setLoggedIn(true);
-          setUserEmail(res.data.email);
+          setUserEmail(res.email);
           history.push(routes.baseRoute);
         })
         .catch(err => console.log(err));
@@ -85,7 +85,7 @@ function App() {
   }, [history])
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(isLiked, card._id)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));

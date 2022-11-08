@@ -1,12 +1,10 @@
 const configApi = {
   BASE_URL: 'https://api.mesto.ekg.nomoredomains.icu',
-  token: `Bearer ${localStorage.getItem('jwt')}`,
 }
 
 class Api {
   constructor(configApi) {
     this._baseUrl = configApi.BASE_URL;
-    this._token = configApi.token;
   }
 
   _getJsonOrError(res) {
@@ -18,7 +16,7 @@ class Api {
 
   _getHeaders() {
     return {
-      authorization: this._token,
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json',
     }
   }
@@ -73,6 +71,7 @@ class Api {
   }
 
   changeLikeCardStatus(isLiked, cardId) {
+    console.log(isLiked);
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: `${isLiked ? 'DELETE' : 'PUT'}`,
       headers: this._getHeaders()
