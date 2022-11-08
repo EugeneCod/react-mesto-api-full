@@ -50,7 +50,6 @@ function App() {
   const [userEmail, setUserEmail] = useState('')
   const [infoTooltipData, setInfoTooltipData] = useState({ text: '', imageName: '' });
   const history = useHistory();
-  console.log(cards);
 
   useEffect(() => {
     loggedIn &&
