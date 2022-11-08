@@ -50,6 +50,7 @@ function App() {
   const [userEmail, setUserEmail] = useState('')
   const [infoTooltipData, setInfoTooltipData] = useState({ text: '', imageName: '' });
   const history = useHistory();
+  console.log(cards);
 
   useEffect(() => {
     loggedIn &&
@@ -82,7 +83,7 @@ function App() {
         .catch(err => console.log(err));
     }
     tokenCheck();
-  }, [history])
+  }, [history.location])
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i === currentUser._id);

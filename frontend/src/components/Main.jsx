@@ -31,7 +31,7 @@ function Main({ cards, onCardLike, onCardDelete, onEditAvatar, onEditProfile, on
         </button>
       </section>
       <ul className="cards">
-        {cards.map((card) => (
+        {cards.slice(0).reverse().map((card) => (
           <Card
             key={card._id}
             card={card}
