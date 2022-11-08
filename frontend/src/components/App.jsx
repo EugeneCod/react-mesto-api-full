@@ -166,7 +166,7 @@ function App() {
     setIsLoading(true);
     api.addCard(cardsData)
       .then(newCard => {
-        setCards([newCard, ...cards]);
+        setCards([...cards, newCard]);
         closeAllPopups();
       })
       .catch(err => console.log(`${err} при добавлении карточки`))
